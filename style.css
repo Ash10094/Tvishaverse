@@ -15,7 +15,7 @@ body, html {
     background: black;
   }
   
-  /* Hidden class to toggle display */
+  /* Hidden class */
   .hidden {
     display: none;
   }
@@ -31,9 +31,28 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Press Start 2P', cursive;
-    color: #39ff14;
-    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+  }
+  
+  #nameOverlay .overlay-content h1 {
+    font-family: 'Bubblegum Sans', cursive;
+    color: pink;
+    font-size: 3em;
+    animation: jump 1s infinite;
+    text-shadow: 0 0 10px pink, 0 0 20px pink;
+    margin: 0;
+  }
+  
+  #nameOverlay .overlay-content p {
+    color: pink;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+  
+  /* Jump animation for the overlay text */
+  @keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
   }
   
   /* Portfolio content styling */

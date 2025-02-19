@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-      // Draw apple
+      // Draw apple as a clear red square
       ctx.fillStyle = "red";
       ctx.fillRect(apple.x, apple.y, snakeSize, snakeSize);
   
-      // Draw snake with neon green color
+      // Draw snake with bright neon green color
       ctx.fillStyle = "#39ff14";
       snake.forEach((part) => {
         ctx.fillRect(part.x, part.y, snakeSize, snakeSize);
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
       else if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
     });
   
-    // Transition function: reveal your name then the portfolio
+    // Transition function: reveal the overlay then scroll to portfolio
     function triggerTransition() {
       // Show the name overlay
       overlay.classList.remove("hidden");
@@ -78,6 +78,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Change background for portfolio
         document.body.style.background = "white";
         portfolio.classList.remove("hidden");
+  
+        // Optional: Smooth scroll to the About section if portfolio content is long
+        const aboutSection = document.getElementById("about");
+        if (aboutSection) {
+          aboutSection.scrollIntoView({ behavior: "smooth" });
+        }
       }, 3000);
     }
   });
