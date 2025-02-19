@@ -1,26 +1,27 @@
-let index = 0;
+// Image Gallery Script
+const images = ["image1.jpg", "image2.jpg", "image3.jpg"]; // Add your images here
+let currentIndex = 0;
 
-function moveSlide(direction) {
-    const slides = document.querySelectorAll(".slide");
-    const totalSlides = slides.length;
-    
-    index += direction;
+const galleryImg = document.getElementById("gallery-img");
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
 
-    if (index < 0) {
-        index = totalSlides - 1;
-    } else if (index >= totalSlides) {
-        index = 0;
-    }
-
-    document.querySelector(".slide-container").style.transform = `translateX(-${index * 100}%)`;
+// Function to update image
+function updateImage() {
+    galleryImg.src = images[currentIndex];
 }
 
-// Smooth Scrolling
-document.querySelectorAll("nav a").forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
-        });
-    });
+// Next Image
+nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
 });
+
+// Previous Image
+prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+});
+
+// Initial Image Load
+updateImage();
