@@ -1,44 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tvisha's Portfolio</title>
-  <!-- Google Font for cutesy bold style -->
-  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide the Snake</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Canvas for Snake Game -->
-  <canvas id="gameCanvas"></canvas>
-
-  <!-- Overlay for name reveal -->
-  <div id="nameOverlay" class="hidden">
-    <div class="overlay-content">
-      <h1>TVISHA GUPTA</h1>
-      <p>Guide the snake to the apple</p>
+    <div class="container">
+        <h1 class="title">TVISHA GUPTA</h1>
+        <p class="instruction">Guide the snake to the apple!</p>
+        <div class="game-area">
+            <div class="snake" id="snake"></div>
+            <div class="apple" id="apple"></div>
+        </div>
     </div>
-  </div>
-
-  <!-- Portfolio content (hidden initially) -->
-  <div id="portfolioContent" class="hidden">
-    <header>
-      <h1>Tvisha's Portfolio</h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <section id="about">
-      <h2>About Me</h2>
-      <p>Hi! I'm Tvisha, a passionate developer and designer.</p>
-    </section>
-    <!-- Add more sections as needed -->
-  </div>
-
-  <script src="script.js"></script>
+    <div class="about-me" id="about-me">
+        <h2>About Me</h2>
+        <p>This is where you can write about yourself.</p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,66 +1,63 @@
-/* General styling */
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    background: black;
-    overflow: hidden;
+body {
     font-family: Arial, sans-serif;
-  }
-  
-  /* Canvas styling */
-  canvas {
-    display: block;
-    background: black;
-  }
-  
-  /* Hidden class */
-  .hidden {
-    display: none;
-  }
-  
-  /* Name overlay styling */
-  #nameOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #nameOverlay .overlay-content h1 {
-    font-family: 'Bubblegum Sans', cursive;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.title {
+    font-size: 48px;
     color: pink;
-    font-size: 3em;
-    animation: jump 1s infinite;
-    text-shadow: 0 0 10px pink, 0 0 20px pink;
-    margin: 0;
-  }
-  
-  #nameOverlay .overlay-content p {
-    color: pink;
-    font-size: 1.2em;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    animation: sparkle 1s infinite alternate;
+}
+
+.instruction {
+    font-size: 24px;
     margin-top: 20px;
-  }
-  
-  /* Jump animation for the overlay text */
-  @keyframes jump {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-  }
-  
-  /* Portfolio content styling */
-  #portfolioContent {
-    background: white;
-    color: black;
-    height: 100%;
-    overflow: auto;
+}
+
+.game-area {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    background-color: #fff;
+}
+
+.snake {
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    position: absolute;
+    top: 190px;
+    left: 190px;
+    transition: transform 0.1s;
+}
+
+.apple {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.about-me {
+    margin-top: 50px;
     padding: 20px;
-  }
-  
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+@keyframes sparkle {
+    0% { text-shadow: 0 0 5px pink, 0 0 10px pink; }
+    100% { text-shadow: 0 0 10px pink, 0 0 20px pink; }
+}

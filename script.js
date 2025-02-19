@@ -1,90 +1,47 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-    const overlay = document.getElementById("nameOverlay");
-    const portfolio = document.getElementById("portfolioContent");
-  
-    // Set canvas size to window size
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  
-    // Snake game variables
-    let snake = [{ x: 50, y: 50 }];
-    const snakeSize = 20;
-    let direction = "RIGHT";
-    // Set apple position
-    let apple = { x: 200, y: 200 };
-  
-    // Game loop interval
-    const gameInterval = setInterval(gameLoop, 100);
-  
-    function gameLoop() {
-      update();
-      draw();
+const snake = document.getElementById('snake');
+const apple = document.getElementById('apple');
+const gameArea = document.querySelector('.game-area');
+
+document.addEventListener('keydown', (event) => {
+    const step = 20;
+    let snakeRect = snake.getBoundingClientRect();
+    let gameAreaRect = gameArea.getBoundingClientRect();
+
+    switch (event.key) {
+        case 'ArrowUp':
+            if (snakeRect.top > gameAreaRect.top) {
+                snake.style.transform = `translateY(-${step}px)`;
+            }
+            break;
+        case 'ArrowDown':
+            if (snakeRect.bottom < gameAreaRect.bottom) {
+                snake.style.transform = `translateY(${step}px)`;
+            }
+            break;
+        case 'ArrowLeft':
+            if (snakeRect.left > gameAreaRect.left) {
+                snake.style.transform = `translateX(-${step}px)`;
+            }
+            break;
+        case 'ArrowRight':
+            if (snakeRect.right < gameAreaRect.right) {
+                snake.style.transform = `translateX(${step}px)`;
+            }
+            break;
     }
-  
-    function update() {
-      // Move snake's head
-      const head = { ...snake[0] };
-      if (direction === "RIGHT") head.x += snakeSize;
-      if (direction === "LEFT") head.x -= snakeSize;
-      if (direction === "UP") head.y -= snakeSize;
-      if (direction === "DOWN") head.y += snakeSize;
-      snake.unshift(head);
-  
-      // Check if snake eats the apple
-      if (head.x === apple.x && head.y === apple.y) {
-        // When the apple is eaten, trigger the transition
-        clearInterval(gameInterval);
-        triggerTransition();
-      } else {
-        snake.pop(); // Remove the tail segment if apple not eaten
-      }
+
+    // Check if snake reaches the apple
+    if (isColliding(snakeRect, apple.getBoundingClientRect())) {
+        alert('You guided the snake to the apple!');
+        document.getElementById('about-me').scrollIntoView({ behavior: 'smooth' });
     }
-  
-    function draw() {
-      // Clear canvas
-      ctx.fillStyle = "black";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
-      // Draw apple as a clear red square
-      ctx.fillStyle = "red";
-      ctx.fillRect(apple.x, apple.y, snakeSize, snakeSize);
-  
-      // Draw snake with bright neon green color
-      ctx.fillStyle = "#39ff14";
-      snake.forEach((part) => {
-        ctx.fillRect(part.x, part.y, snakeSize, snakeSize);
-      });
-    }
-  
-    // Handle keyboard input to change snake direction
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
-      else if (e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
-      else if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
-      else if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
-    });
-  
-    // Transition function: reveal the overlay then scroll to portfolio
-    function triggerTransition() {
-      // Show the name overlay
-      overlay.classList.remove("hidden");
-  
-      // After 3 seconds, transition to the portfolio page
-      setTimeout(() => {
-        overlay.classList.add("hidden");
-        canvas.classList.add("hidden");
-        // Change background for portfolio
-        document.body.style.background = "white";
-        portfolio.classList.remove("hidden");
-  
-        // Optional: Smooth scroll to the About section if portfolio content is long
-        const aboutSection = document.getElementById("about");
-        if (aboutSection) {
-          aboutSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 3000);
-    }
-  });
-  
+});
+
+function isColliding(rect1, rect2) {
+    return !(
+        rect1.right < rect2.left ||
+        rect1.left > rect2.right ||
+        rect1.bottom < rect2.top ||
+        rect1.top > rect2.bottom
+    );
+}
