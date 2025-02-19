@@ -1,21 +1,32 @@
+/* 1. Import your custom font */
 @font-face {
-    font-family: 'TanNimbus';
-    src: url('fonts/TAN-NIMBUS.otf') format('opentype');
+    font-family: 'TanNimbus'; /* Name it whatever you want */
+    src: url('fonts/TAN-NIMBUS.otf') format('opentype'); /* Path to your .otf file */
     font-weight: normal;
     font-style: normal;
   }
   
+  /* 2. Body styling */
   body {
-    background-color: #FFC0CB; /* Baby pink background */
-    display: flex;
+    margin: 0;
+    padding: 0;
+    background-color: #FFC0CB; /* Baby pink */
+    display: flex;            /* Use flex to center content */
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 100vh;            /* Full viewport height */
   }
   
+  /* 3. Center container to keep text together */
+  .center-content {
+    text-align: center;
+  }
+  
+  /* 4. Heading styling */
   h1 {
     font-family: 'TanNimbus', sans-serif;
-    font-size: 80px;
+    font-size: 80px;    /* Adjust size as you like */
+    margin: 0;          /* Remove default margin */
     color: black;
-  }  
+  }
+  
