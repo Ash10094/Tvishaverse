@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tvisha's Portfolio</title>
+  <!-- Optional: Import a pixel-style font (e.g., Press Start 2P from Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Canvas for Snake Game -->
+  <canvas id="gameCanvas"></canvas>
 
+  <!-- Overlay for name reveal -->
+  <div id="nameOverlay" class="hidden">
+    <h1>Tvisha</h1>
+  </div>
+
+  <!-- Portfolio content (hidden initially) -->
+  <div id="portfolioContent" class="hidden">
     <header>
-        <h1>Tvisha's Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <h1>Tvisha's Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
-
     <section id="about">
-        <h2>About Me</h2>
-        <p>Hi! I'm Tvisha, a passionate developer and designer. I love creating awesome things!</p>
+      <h2>About Me</h2>
+      <p>Hi! I'm Tvisha, a passionate developer and designer.</p>
     </section>
+    <!-- Add more sections as needed -->
+  </div>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-card">
-            <h3>Project 1</h3>
-            <p>Description of your first project.</p>
-        </div>
-        <div class="project-card">
-            <h3>Project 2</h3>
-            <p>Description of your second project.</p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact</h2>
-        <form id="contact-form">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-        </form>
-        <p id="confirmation"></p>
-    </section>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
