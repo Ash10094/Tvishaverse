@@ -4,15 +4,28 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+renderer.shadowMap.enabled = true;
+light.castShadow = true;
+
+model.traverse((child) => {
+    if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+    }
+});
+const pointLight = new THREE.PointLight(0xffcc88, 0.5);
+pointLight.position.set(0, 5, 0); // Adjust position
+scene.add(pointLight);
+
 
 // Add Background Color (Fix Black Screen)
 renderer.setClearColor(0x202020); // Dark grey background
 
 // Lighting (Fix Dark Model)
-const ambientLight = new THREE.AmbientLight(0xffffff, 3); // Brighter ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.3); // Adjust as needed
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+const light = new THREE.DirectionalLight(0xffffff, 0.8); // Adjust intensity
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
 
@@ -35,6 +48,9 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.1;
 controls.rotateSpeed = 0.5;
+controls.enableZoom = true;
+controls.enableRotate = true;
+
 
 // Animation Loop
 function animate() {
