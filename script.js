@@ -18,7 +18,7 @@ scene.add(directionalLight);
 
 // Load 3D Model
 const loader = new THREE.GLTFLoader();
-loader.load('./isometric_room.glb', function (gltf) {
+loader.load('isometric_room.glb', function (gltf) {
     const model = gltf.scene;
     model.position.set(0, -1, 0); // Adjust model position if needed
     model.scale.set(1, 1, 1); // Scale model
